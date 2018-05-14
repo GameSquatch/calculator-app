@@ -1,0 +1,18 @@
+#screen {
+    width: 200px;
+    height: 40px;
+    background-color: gainsboro;
+    text-align: right;
+}
+
+button {
+    width: 35px;
+    height: 35px;
+    color: white;
+    background-color: darkgrey;
+    border: none;
+}
+button:active {
+    color: gainsboro;
+    box-shadow: none;
+}
