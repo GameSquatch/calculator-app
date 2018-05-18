@@ -6,7 +6,7 @@
 }
 
 button {
-    width: 35px;
+    width: 100%;
     height: 35px;
     color: white;
     background-color: darkgrey;
@@ -15,4 +15,11 @@ button {
 button:active {
     color: gainsboro;
     box-shadow: none;
+}
+button:hover {
+    background-color: #777;
+}
+
+.col {
+    margin: 8px;
 }
