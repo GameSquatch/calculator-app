@@ -1,8 +1,18 @@
 #screen {
     width: 200px;
-    height: 40px;
+    height: 50px;
     background-color: gainsboro;
     text-align: right;
+}
+#currentNumber {
+    height: 30px;
+}
+#entered {
+    font-size: 10pt;
+}
+#screen p {
+    margin: 0;
+    padding: 0;
 }
 
 button {
