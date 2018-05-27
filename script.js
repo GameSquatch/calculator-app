@@ -51,7 +51,13 @@ $(document).ready(function() {
 });
 
 function validate() {
+    if (entered.charAt(entered.length - 1) == '=') {
+        entry = '';
+        entered = '';
+    }
+
     entry += pressed;
+
     //if last entry (last character in entered) is number && the length of number string is below limit, it's valid
     if (pressed == '+' || pressed == '-' || pressed == 'x' || pressed == '=' || pressed == '/') {
 
@@ -68,7 +74,9 @@ function validate() {
 
         if (pressed == '=') {
             //console.log(numbers);
-            calc();
+            if (entered != '') {
+                calc();
+            }
         }
     }
 
@@ -110,7 +118,8 @@ function calc() {
         }
     }
     
-    console.log(result);
+    numbers = [];
+    entry = result;
 
 }
 
