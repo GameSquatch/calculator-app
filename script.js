@@ -2,6 +2,7 @@ var entered = '';
 var entry = '';
 var pressed = '';
 var divide = '';
+var numbers = [];
 var currentNumber, log;
 
 $(document).ready(function() {
@@ -20,10 +21,12 @@ $(document).ready(function() {
 
         if (pressed == 'AC' || pressed == 'CE') {
             cleared = true;
+            
 
             if (pressed == 'AC') {
                 entry = '';
                 entered = '';
+                numbers = [];
             }
     
             if (pressed == 'CE') {
@@ -58,10 +61,14 @@ function validate() {
         }
 
         entered += entry;
+        var obj = {};
+        obj[pressed] = parseFloat(entry);
+        numbers.push(obj);
         entry = '';
 
         if (pressed == '=') {
-
+            //console.log(numbers);
+            calc();
         }
     }
 
@@ -76,6 +83,34 @@ function validate() {
             entry = entry.slice(0, -1);
         }
     }
+
+}
+
+function calc() {
+    var currentObj, nextKey;
+    var result = numbers[0][Object.keys(numbers[0])[0]];
+    
+    for (var i = 0; i < numbers.length - 1; ++i) {
+
+        currentObj = numbers[i];
+        nextKey = Object.keys(numbers[i + 1]);
+        console.log(result);
+
+        if (currentObj.hasOwnProperty('+')) {
+            result += numbers[i + 1][nextKey[0]];
+        }
+        else if (currentObj.hasOwnProperty('-')) {
+            result -= numbers[i + 1][nextKey[0]];
+        }
+        else if (currentObj.hasOwnProperty('x')) {
+            result *= numbers[i + 1][nextKey[0]];
+        }
+        else if (currentObj.hasOwnProperty('/')) {
+            result /= numbers[i + 1][nextKey[0]];
+        }
+    }
+    
+    console.log(result);
 
 }
 
