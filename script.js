@@ -16,8 +16,8 @@ $(document).ready(function() {
         //console.log($(this).html());
         pressed = $(this).text();
 
-        console.log(pressed);
-
+        //console.log(pressed);
+        entry += pressed;
 
         if (pressed == 'AC' || pressed == 'CE') {
             cleared = true;
@@ -51,20 +51,21 @@ $(document).ready(function() {
 });
 
 function validate() {
-    if (entered.charAt(entered.length - 1) == '=') {
+    var last = entered.charAt(entered.length - 1);
+    if (last == '=' && entry != '') {
         entry = '';
         entered = '';
     }
 
-    entry += pressed;
-
     //if last entry (last character in entered) is number && the length of number string is below limit, it's valid
-    if (pressed == '+' || pressed == '-' || pressed == 'x' || pressed == '=' || pressed == '/') {
+    if (pressed == '+' || pressed == '-' || pressed == 'x' || pressed == '/') {
 
-            //if the only button pressed is a symbol, the symbol shouldn't be logged into what was entered, so wipe pressed
+        //if the only button pressed is a symbol, the symbol shouldn't be logged into what was entered, so wipe entry
         if (entry.length == 1) {
             entry = '';
         }
+
+        //TO-DO add functionality for negative numbers
 
         entered += entry;
         var obj = {};
@@ -72,12 +73,23 @@ function validate() {
         numbers.push(obj);
         entry = '';
 
-        if (pressed == '=') {
-            //console.log(numbers);
-            if (entered != '') {
-                calc();
-            }
+    }
+
+    if (pressed == '=') {
+        //var last = entered.charAt(entered.length - 1);
+        var elast = entry.charAt(entry.length - 2);
+        console.log(elast);
+        if (entered != '' && entry != '' && elast != '.') {
+            entered += entry;
+            var obj = {};
+            obj[pressed] = parseFloat(entry);
+            numbers.push(obj);
+            calc();
         }
+        else {
+            entry = entry.slice(0, -1);
+        }
+        
     }
 
     if (pressed == '.') {
