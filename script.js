@@ -44,10 +44,13 @@ function clear() {
     if (pressed == 'AC') {
         nums = [];
         ops = [];
+        entry = '';
+        entered = '';
         currentNumber.html('0');
         log.html('0');
     }
     else {
+        entry = '';
         currentNumber.html('0');
     }
 }
@@ -62,7 +65,7 @@ function checkPressed() {
         }
     }
     else if (pressed == '0') {
-        if (entry != '' || entry != '0') {
+        if (entry != '' && entry != '0') {
             entry += '0';
         }
     }
@@ -75,6 +78,8 @@ function checkPressed() {
 
 function logOperation() {
     //check that operations aren't being pressed more than once in succession
+    var logText = log.text();
+
     if (entry != '' && entry != '0') {
         nums.push(parseFloat(entry));
         ops.push(pressed);
@@ -83,6 +88,13 @@ function logOperation() {
 
         currentNumber.html(entry);
         log.html(entered);
+    }
+    else if (logText.charAt(logText.length - 1) == '=') {
+        nums.push(parseFloat(currentNumber.text()));
+        ops.push(pressed);
+        entered = currentNumber.text() + pressed;
+        log.html(entered);
+        currentNumber.html('');
     }
 
     
