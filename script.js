@@ -131,8 +131,13 @@ function calc() {
         ops = [];
         entry = '';
         entered = '';
-        currentNumber.html(firstNum);
 
+        if (firstNum >= 1000000000 || firstNum <=d -1000000000) {
+            currentNumber.html("MAX CHARS");
+        }
+        else {
+            currentNumber.html(firstNum);
+        }
     }
 }
 
