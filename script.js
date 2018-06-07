@@ -18,6 +18,9 @@ $(document).ready(function() {
         if (pressed == 'AC' || pressed == 'CE') {
             clear();
         }
+        else if (entry.length == 9) {
+            $(currentNumber).html("MAX CHARS");
+        }
         else {
             var numCheck = parseInt(pressed);
 
@@ -132,7 +135,7 @@ function calc() {
         entry = '';
         entered = '';
 
-        if (firstNum >= 1000000000 || firstNum <=d -1000000000) {
+        if (firstNum >= 1000000000 || firstNum <= -1000000000) {
             currentNumber.html("MAX CHARS");
         }
         else {

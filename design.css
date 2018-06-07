@@ -1,13 +1,13 @@
 #screen {
-    height: 50px;
+    height: 75px;
     background-color: gainsboro;
     text-align: right;
 }
 #currentNumber {
-    height: 30px;
+    font-size: 24pt;
 }
 #entered {
-    font-size: 10pt;
+    font-size: 12pt;
 }
 #screen p {
     margin: 0;
