@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
 #screen {
     height: 75px;
-    background-color: gainsboro;
+    padding: 0 15px;
+    margin-bottom: 20px;
+    background-color: #d6d5d1;
     text-align: right;
+    font-family: 'Roboto Mono', monospace;
 }
 #currentNumber {
+    height: 50px;
     font-size: 24pt;
 }
 #entered {
@@ -14,14 +20,19 @@
     padding: 0;
 }
 
+.clears {
+    margin: 0 2px;
+}
+
 button {
     width: 100%;
-    height: 35px;
+    height: 40px;
     color: white;
     background-color: darkgrey;
     border: none;
     outline: none;
     box-shadow: none;
+    font-size: 14pt;
 }
 button:active {
     color: gainsboro;
@@ -34,6 +45,20 @@ button:focus {
 }
 button:hover {
     background-color: #777;
+}
+button.buttonRed {
+    color: white;
+    background-color: #b24545;
+}
+button.buttonRed:hover {
+    background-color: #8e3636;
+}
+button.buttonEquals {
+    color: white;
+    background-color: #91b282;
+}
+button.buttonEquals:hover {
+    background-color: #647c59;
 }
 
 .col {
