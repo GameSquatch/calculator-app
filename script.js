@@ -125,7 +125,7 @@ function calc() {
                 firstNum *= nums[i + 1];
                 break;
             case '/':
-                firstNum /= nums[i + 1];
+                firstNum = roundFloat(firstNum / nums[i + 1]);
                 break;
             }
         }
@@ -142,5 +142,20 @@ function calc() {
             currentNumber.html(firstNum);
         }
     }
+}
+
+function roundFloat(num) {
+    //return (Math.round(num * 1000000000)) / 1000000000;
+
+    let p = 0;
+    let d;
+    
+    do {
+        d = Math.pow(10, ++p);
+    } while (num / d >= 1);
+
+    let diff = 1000000000 / d;
+
+    return (Math.round(num * diff) / diff);
 }
 
