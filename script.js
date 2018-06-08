@@ -86,6 +86,7 @@ function logOperation() {
     if (entry != '' && entry != '0') {
         nums.push(parseFloat(entry));
         ops.push(pressed);
+
         entered += entry + pressed;
         entry = '';
 
@@ -112,6 +113,26 @@ function calc() {
         log.html(entered);
 
         var firstNum = nums[0];
+
+        /*
+        let firstNum;
+        let operations = ['*', '/', '+', '-'];
+        
+        if (ops.length > 1) {
+            for (var i = 0; i < operations.length; ++i) {
+                let o = operations[i];
+                
+                for (var j = 0; j < ops.length; ++j) {
+                    if (ops[j] == o) {
+                        if (i == 0) {
+                            firstNum = nums[0];
+                        }
+
+                    }
+                }
+            }
+        }
+        */
 
         for (var i = 0; i < ops.length; ++i) {
             switch (ops[i]) {
@@ -149,7 +170,7 @@ function roundFloat(num) {
 
     let p = 0;
     let d;
-    
+
     do {
         d = Math.pow(10, ++p);
     } while (num / d >= 1);
